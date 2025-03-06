@@ -23,10 +23,14 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm install  # Use npm install directly
+        run: |
+          cd frontend  # Navigate to the folder where package.json is located (if it's in a subdirectory)
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd frontend  # Again, navigate to the folder if necessary
+          npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
